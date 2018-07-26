@@ -1,21 +1,25 @@
-package entity;
+package db.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "USERS")
 public class User {
-
     @Id
-    //@Column(name = "ID")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "LOGIN")
+    @Column(name = "LOGIN", unique = true)
     private String login;
     @Column(name = "PASSWORD")
     private String pass;
 
     public User() {
+    }
+
+    public User(String login, String pass) {
+        this.login = login;
+        this.pass = pass;
     }
 
     public Long getId() {
@@ -44,10 +48,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", pass='" + pass + '\'' +
-                '}';
+        return "User{"
+                + "id=" + id
+                + ", login='" + login + '\''
+                + ", pass='" + pass + '\''
+                + '}';
     }
 }

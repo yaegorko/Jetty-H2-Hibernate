@@ -1,7 +1,6 @@
-package servlets;
+package server.servlets;
 
-import accounts.AccountService;
-import entity.User;
+import db.services.AccountService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,15 +16,9 @@ public class SignInServlet extends HttpServlet {
         this.accountService = accountService;
     }
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
-        User testingUser = accountService.getUserByLogin(login);
-        if (testingUser == null) {
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            resp.getWriter().println("Unauthorized");
-        } else {
-            resp.setStatus(HttpServletResponse.SC_OK);
-            resp.getWriter().println("Authorized: " + login);
-        }
+        accountService.getUserByLogin(login);
+        resp.setStatus(HttpServletResponse.SC_OK);
     }
 }
