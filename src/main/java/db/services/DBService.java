@@ -11,10 +11,10 @@ public class DBService {
     //создаем таблицу если ее не существует, если существует не трогаем.
     private static final String HIBERNATE_HBM_2_DDL_AUTO = "update";
 
-    private static final SessionFactory sessionFactory = createSessionFactory(getH2Configuration());
+    private static final SessionFactory SESSION_FACTORY = createSessionFactory(getH2Configuration());
 
     public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+        return SESSION_FACTORY;
     }
     //конфигурация подключения к базе.
     private static Configuration getH2Configuration() {
