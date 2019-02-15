@@ -5,9 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USERS")
 public class User {
+
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "LOGIN", unique = true)
     private String login;

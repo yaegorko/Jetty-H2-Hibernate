@@ -1,13 +1,12 @@
 package db.services;
 
+import db.services.hibernate.DBServiceHibernate;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class DBServiceTest {
 
     @Test
     public void test1() {
-        DBService service = new DBService();
+        DBServiceHibernate service = new DBServiceHibernate();
     }
 }

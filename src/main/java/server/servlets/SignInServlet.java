@@ -3,7 +3,6 @@ package server.servlets;
 import db.entity.User;
 import db.services.AccountService;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,10 +16,10 @@ public class SignInServlet extends HttpServlet {
         this.accountService = accountService;
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
         User user = accountService.getUserByLogin(login);
-        if (user != null) {
+        if (user.getLogin() != null) {
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.getWriter().println("Authorized: " + login);
         } else {

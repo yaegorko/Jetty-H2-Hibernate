@@ -1,7 +1,8 @@
 package main;
 
 import db.services.AccountService;
-import db.services.DBService;
+import db.services.hibernate.AccountServiceHibernate;
+import db.services.jdbc.AccountServiceJDBC;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -14,22 +15,16 @@ import server.servlets.*;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-      //  getConnectToDB();
         startWebServer();
     }
 
-//    public static void getConnectToDB() {
-//        DBService dbService = new DBService();
-//    }
-
     public static void startWebServer() throws Exception {
 
-        AccountService accountService = new AccountService();
+        AccountService accountService = new AccountServiceJDBC();
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
         context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/signin");
         context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signup");
-
 
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("public_html");

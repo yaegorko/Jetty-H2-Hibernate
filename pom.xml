@@ -14,7 +14,6 @@
         <com.h2database.h2.version>1.4.187</com.h2database.h2.version>
     </properties>
 
-
     <dependencies>
 
         <dependency>
@@ -59,13 +58,6 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
             <version>9.3.0.M0</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
         </dependency>
 
     </dependencies>
